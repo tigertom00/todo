@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Working</title>
+    {% load static %}
+  </head>
+  <body ng-app="toDo" ng-controller="toDoController">
+    <h1>yo</h1>
+    <form ng-submit="todoAdd()">
+      <input
+        type="text"
+        ng-model="todoInput"
+        placeholder="Add a new to do..."
+      />
+      <input type="submit" name="" value="Submit" />
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="{% static 'js/todo.js' %}"></script>
+  </body>
+</html>
