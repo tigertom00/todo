@@ -5,18 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Working</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
   </head>
   <body ng-app="toDo" ng-controller="toDoController">
-    <h1>yo</h1>
-    <form ng-submit="todoAdd()">
-      <input
-        type="text"
-        ng-model="todoInput"
-        placeholder="Add a new to do..."
-      />
-      <input type="submit" name="" value="Submit" />
-    </form>
+    <div class="container">
+      <h1>To Do List</h1>
+      <form ng-submit="todoAdd()">
+        <div class="form-group">
+          {% csrf_token %}
+          <input
+            type="text"
+            ng-model="todoInput"
+            placeholder="Add a new to do..."
+            class="form-control"
+          />
+          <textarea
+            type="text"
+            ng-model="todoDisc"
+            placeholder="Discription, Anything more to add..."
+            class="form-control"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" ng-click="saveData()" class="btn btn-primary">
+            Submit
+          </button>
+        </div>
+      </form>
+      <br />
+      <!-- <ul class="list-group list-group-vertical-lg"> -->
+      <div ng-repeat="todo in todoList">
+        <!-- <li class="list-group-item"> -->
+        <ul class="list-group list-group-horizontal">
+          <li>
+            <input
+              type="checkbox"
+              class="form-check-input"
+              ng-model="todo.done"
+            />
+          </li>
+          <li class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">
+                <span ng-bind="todo.todoText"></span>
+              </h5>
+              <small>3 days ago</small>
+            </div>
+            <p class="mb-1">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem,
+              excepturi odit quis unde soluta nesciunt facilis voluptates
+              reprehenderit inventore delectus. Excepturi reiciendis sit maiores
+              quisquam provident quam possimus doloremque. Temporibus. Donec id
+              elit non mi porta gravida at eget metus. Maecenas sed diam eget
+              risus varius blandit.
+            </p>
+          </li>
+        </ul>
+        <!-- </li> -->
+      </div>
+      <!-- </ul> -->
+      <div class="form-group">
+        <button ng-click="remove()" class="btn btn-danger">Done</button>
+      </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
     <script src="{% static 'js/todo.js' %}"></script>
   </body>
