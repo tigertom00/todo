@@ -10,7 +10,6 @@ class ToDoListView(APIView):
     def get(self, request):
         todos = ToDoElements.objects.all()
         serializer = ToDoSerializer(todos, many=True)
-
         return Response(serializer.data)
 
     # def post(self, request):

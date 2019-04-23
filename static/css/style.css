@@ -2,9 +2,9 @@ h1 {
   color: rgb(170, 49, 49);
 }
 
-/* .list-group-item {
-  border: 0px !important;
-} */
+.list-group-item {
+  width: 100% !important;
+}
 
 /* .list-group {
   border: 0.25px solid rgb(185, 185, 185) !important;
